@@ -24,7 +24,7 @@ body {
         var(--grafite);
     background-size: 22.5rem;
     color: var(--branco);
-    height: 100vh;
+    height: 130vh;
 }
 
 #root {
