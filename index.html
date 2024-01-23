@@ -21,26 +21,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
         integrity="sha512-MOCpqoRoisCTwJ8vQQiciZv0qcpROCidek3GTFS6KTk2+y7munJIlKCVkFCYY+p3ErYFXCjmFjnfTTRSC1OHWQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.8/babel.min.js"
-        integrity="sha512-EloEMxhHnDVjte/OduE0UfxufBH8ug8MyNzYa7bu77Ad5ewVaNT2coWlB30S1a7XqoeGoCARY/xNl9UxSv79tg=="
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.3/babel.min.js"
+        integrity="sha512-MIXku7j6pJ0hqd2T4WXZMGerp3BU9B91rfLRDp/McDBNNdnwTD+yLJaz9AHcYXT6k16dYTkG9S2KRPGxaBIfBQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="text/babel">
         function Titulo({ children }) {
             return (
-                <h1 className="form__titulo">{children}</h1>
+                <h1 className='form__titulo'>{children}</h1>
             )
         }
 
-        function SubTitulo({ children }) {
+        function Subtitulo({ children }) {
             return (
-                <h3 className="form__texto">{children}</h3>
+                <h2 className='form__texto'>{children}</h2 >
             )
         }
 
         function CampoDeDigitacao({ label, tipo, placeholder, value, setValor }) {
             return (
-                <div className="form__campo-digitacao">
+                <div className='form__campo-digitacao'>
                     <label for={tipo}>{label}</label>
                     <input type={tipo}
                         placeholder={placeholder}
@@ -54,18 +54,18 @@
 
         function Botao({ children }) {
             return (
-                <button className="form__botao" type="submit">{children}</button>
+                <button type='submit' className='form__botao'>{children}</button>
             )
         }
 
         function Checkbox() {
             return (
                 <>
-                    <div className="form__campo-checkbox">
-                        <input type="checkbox" id="lembrar" />
-                        <label for="lembrar" />
+                    <div className='form__campo-checkbox'>
+                        <input type='checkbox' id='lembrar' />
+                        <label for='lembrar' />
                     </div>
-                    <p className="form__opcoes-texto">Lembrar-me</p>
+                    <p className='form__opcoes-texto'>Lembrar-me</p>
                 </>
             )
         }
@@ -76,20 +76,28 @@
             )
         }
 
-        function itemRedesSociais({ link, nome }) {
-            return(
+        function ItemRedesSociais({ link, nome }) {
+            return (
                 <li>
-                    <a href="{link}">
+                    <a href={link}>
                         <img src={`./img/${nome}.svg`} alt={`ícone do ${nome}`} />
                         {nome}
-                    </a>    
+                    </a>
                 </li>
             )
         }
 
+        function Link({ children }) {
+            return (
+                <a href='#' className='container-links__link'>
+                    {children}
+                </a>
+            )
+        }
+
         function PaginaDeLogin() {
-            const [email, setEmail] = React.useState("");
-            const [senha, setSenha] = React.useState("");
+            const [email, setEmail] = React.useState('');
+            const [senha, setSenha] = React.useState('');
 
             const handleSubmit = (event) => {
                 event.preventDefault();
@@ -98,45 +106,48 @@
             }
 
             return (
-                <div className="container-login">
-                    <img src="./img/imagem-login.png" alt="Mulher mexendo no computador, também há o logo da codeconnect" />
+                <div className='container-login'>
+                    <img src='./img/imagem-login.png' alt='uma mulher negra de cabelos crespos usando óculos e mexendo no computador, também há o logo da codeconnect' />
                     <section>
                         <form onSubmit={handleSubmit}>
                             <Titulo>Login</Titulo>
-
-                            <SubTitulo>Boas-vindas! Faça seu login.</SubTitulo>
-
-                            <CampoDeDigitacao
-                                label="E-mail ou usuário"
-                                tipo="email"
-                                placeholder="Digite seu e-mail ou usuário"
+                            <Subtitulo>Boas-vindas! Faça o seu login</Subtitulo>
+                            <CampoDeDigitacao label='E-mail ou usuário'
+                                tipo='email'
+                                placeholder='Digite o seu e-mail ou usuário'
                                 value={email}
                                 setValor={setEmail}
                             />
-
-                            <CampoDeDigitacao
-                                label="Senha"
-                                tipo="password"
-                                placeholder="Digite sua senha"
+                            <CampoDeDigitacao label='Senha'
+                                tipo='password'
+                                placeholder='Digite a sua senha'
                                 value={senha}
                                 setValor={setSenha}
                             />
-
-                            <fieldset className="form__opcoes">
+                            <fieldset className='form__opcoes'>
                                 <Checkbox />
                                 <p>
-                                    <a href="#" aria-label="Recuperar senha">Esqueci a senha</a>
+                                    <a href='#' aria-label='Recuperar senha esquecida'>Esqueci a senha</a>
                                 </p>
                             </fieldset>
-
                             <Botao>Login</Botao>
                         </form>
+                        <div className='container-links'>
+                            <Texto classe='container-links__titulo'>ou entre com outras contas</Texto>
+                            <ul>
+                                <ItemRedesSociais link='https://www.github.com' nome='Github' />
+                                <ItemRedesSociais link='https://www.google.com' nome='Google' />
+                            </ul>
+                            <Texto classe='container-links__texto'>Ainda não tem conta?</Texto>
+                            <Link>Crie seu cadastro!</Link>
+                        </div>
                     </section>
                 </div>
             )
         }
 
         ReactDOM.createRoot(document.getElementById('root')).render(<PaginaDeLogin />)
+
     </script>
 </body>
 
