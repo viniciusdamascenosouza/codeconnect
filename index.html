@@ -43,7 +43,7 @@
                 <div className="form__campo-digitacao">
                     <label for="email">{label}</label>
                     <input type={tipo}
-                        placeholder={placeholder}
+                        placeholder="Digite seu e-mail ou usuário"
                         required
                         id="email"
                         value={value}
@@ -59,12 +59,7 @@
         }
 
         function PaginaDeLogin() {
-            let email = "viniciusteste@dominio.com"
-
-            function substituiValorDoCampo(novoValor) {
-                email = novoValor;
-                console.log(email);
-            }
+            const [email, setEmail] = React.useState('');
 
             return (
                 <div className="container-login">
@@ -74,13 +69,13 @@
                             <Titulo>Login</Titulo>
 
                             <SubTitulo>Boas-vindas! Faça seu login.</SubTitulo>
-                            
+
                             <CampoDeDigitacao
                                 label="E-mail ou usuário"
                                 tipo="email"
                                 placeholder="email"
                                 value={email}
-                                setValor={substituiValorDoCampo}
+                                setValor={setEmail}
                             />
 
                             <CampoDeDigitacao
