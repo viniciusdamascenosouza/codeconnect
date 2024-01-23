@@ -38,12 +38,12 @@
             )
         }
 
-        function CampoDeDigitacao() {
+        function CampoDeDigitacao({label, tipo, placeholder}) {
             return (
                 <div className="form__campo-digitacao">
-                    <label for="email">E-mail ou usuário</label>
-                    <input type="email"
-                        placeholder="Digite o seu e-mail ou usuário"
+                    <label for="email">{label}</label>
+                    <input type={tipo}
+                        placeholder={placeholder}
                         required
                         id="email" />
                 </div>
@@ -52,7 +52,7 @@
 
         function Botao() {
             return (
-                <button type="submit">Login</button>
+                <button className="form__botao" type="submit">Login</button>
             )
         }
 
@@ -62,18 +62,18 @@
                     <img src="./img/imagem-login.png" alt="Mulher mexendo no computador, também há o logo da codeconnect" />
                     <section>
                         <form>
-                            <Titulo></Titulo>
-                            <SubTitulo></SubTitulo>
-                            <CampoDeDigitacao></CampoDeDigitacao>
-
-                            <div className="form__campo-digitacao">
-                                <label for="senha">Senha</label>
-                                <input type="password"
-                                    placeholder="Digite sua senha"
-                                    required
-                                    id="senha" />
-                            </div>
-                            <Botao></Botao>
+                            <Titulo />
+                            <SubTitulo />
+                            <CampoDeDigitacao
+                                label="E-mail ou usuário"
+                                tipo="email"
+                                placeholder="Digite seu email ou usuário" />
+                            
+                            <CampoDeDigitacao 
+                                label="Senha"
+                                tipo="password"
+                                placeholder="Digite sua senha"/>    
+                            <Botao />
                         </form>
                     </section>
                 </div>
